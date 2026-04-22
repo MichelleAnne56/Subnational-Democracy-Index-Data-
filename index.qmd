@@ -1,0 +1,35 @@
+---
+title: "Subnational Democracy in Centro Region in Argentina"
+format: revealjs
+---
+
+
+```{r}
+library(tidyverse)
+library(knitr)
+
+load('SDI.RData')
+
+
+data <- 
+  data_sdi |>
+    filter(region_name == "CENTRO")
+```
+
+# analysis slide
+
+
+```{r}
+# The level of subnational democracy in the executive branch in the Santa Fe state dropped significantly from 1995 through 2006, before rising back up until 2022 when it dipped again. By comparison, the level of subnational democracy in the executive branch in Entre Rios and Cordoba states was high in the late 1990s and early 200s but fell dramatically in 2010 before rising in 2022. 
+data |>
+  ggplot(aes(x = year, y =SUR_index_sub_exe, color = state_name)) +
+  geom_line() +
+  labs(
+    title = "Democracy Index In Centro Region in Argentina", 
+    x = "Year", 
+    y = "Democracy Index", 
+    color = "State"
+  ) + 
+  theme_minimal()
+
+```
